@@ -10,7 +10,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     mysql_install_db --user=mysql --datadir=/var/lib/mysql --skip-test-db > /dev/null
 
     # 一時的なMariaDBサーバーを起動してセットアップを実行
-    mysqld --user=mysql --bootstrap --skip-networking=0 << EOF
+    mysqld --user=mysql --bootstrap << EOF
 USE mysql;
 FLUSH PRIVILEGES;
 

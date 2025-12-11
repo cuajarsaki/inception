@@ -6,13 +6,14 @@ RUN apk update && apk upgrade && \
     mariadb-client
 
 # 必要なディレクトリを作成
-RUN mkdir -p /var/lib/mysql /run/mysqld
+RUN mkdir -p /var/lib/mysql /run/mysqld /var/log/mysql
 
 # パーミッションを設定
-RUN chown -R mysql:mysql /var/lib/mysql /run/mysqld
+RUN chown -R mysql:mysql /var/lib/mysql /run/mysqld /var/log/mysql
 
 # MariaDB設定ファイルをコピー
 COPY conf/my.cnf /etc/my.cnf.d/my.cnf
+RUN sed -i 's/^skip-networking/#skip-networking/' /etc/my.cnf.d/mariadb-server.cnf
 
 # 初期化スクリプトをコピー
 COPY tools/setup.sh /tmp/setup.sh
