@@ -51,6 +51,7 @@ fi
 
 # 適切なパーミッションを設定
 chown -R nobody:nobody /var/www/html
+chmod -R 755 /var/www/html
 
 echo "Starting PHP-FPM..."
 exec "$@"
