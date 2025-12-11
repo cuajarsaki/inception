@@ -38,6 +38,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 # PHP-FPM設定ファイルをコピー
 COPY conf/www.conf /etc/php82/php-fpm.d/www.conf
+COPY conf/php.ini /etc/php82/php.ini
 
 # WordPressセットアップスクリプトをコピー
 COPY tools/setup.sh /tmp/setup.sh
